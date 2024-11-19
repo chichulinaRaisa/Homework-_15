@@ -1,0 +1,94 @@
+class NumberUtils {
+
+    public static ArrayList<Integer> diapazon(int min, int max) {
+        ArrayList<Integer> range = new ArrayList<>();
+        for (int i = min; i <= max; i++) {
+            range.add(i);
+        }
+        return range;
+  
+    public static int summaBolshihPyati(List<Integer> numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            if (num > 5) {
+                sum += num;
+            }
+        }
+        return sum;
+    }
+
+    
+    public static void zapolnitSpisokChislom(int number, List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            numbers.set(i, number);
+        }
+    }
+
+    public static void uvelichitElementySpiska(int increment, List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            numbers.set(i, numbers.get(i) + increment);
+        }
+    }
+}
+
+class Sotrudnik {
+    private String name;
+    private int age;
+
+    public Sotrudnik(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+class SotrudnikUtils {
+
+    public static List<String> imenaSotrudnikov(List<Sotrudnik> sotrudniki) {
+        List<String> names = new ArrayList<>();
+        for (Sotrudnik sotrudnik : sotrudniki) {
+            names.add(sotrudnik.getName());
+        }
+        return names;
+    }
+
+  
+    public static List<Sotrudnik> filtrPoVozrastu(List<Sotrudnik> sotrudniki, int minAge) {
+        List<Sotrudnik> filteredEmployees = new ArrayList<>();
+        for (Sotrudnik sotrudnik : sotrudniki) {
+            if (sotrudnik.getAge() >= minAge) {
+                filteredEmployees.add(sotrudnik);
+            }
+        }
+        return filteredEmployees;
+    }
+
+    //  Метод, принимающий список сотрудников и минимальный средний возраст, проверяющий превышает ли средний возраст указанное значение.
+    public static boolean sredniiVozrastBolshie(List<Sotrudnik> sotrudniki, int minAverageAge) {
+        int totalAge = 0;
+        for (Sotrudnik sotrudnik : sotrudniki) {
+            totalAge += sotrudnik.getAge();
+        }
+        return sotrudniki.size() > 0 && (totalAge / sotrudniki.size()) > minAverageAge;
+    }
+
+    // Метод, принимающий список сотрудников, и возвращающий самого молодого сотрудника.
+    public static Sotrudnik samyiMolodoi(List<Sotrudnik> sotrudniki) {
+        if (sotrudniki.isEmpty()) return null;
+
+        Sotrudnik youngest = sotrudniki.get(0);
+        for (Sotrudnik sotrudnik : sotrudniki) {
+            if (sotrudnik.getAge() < youngest.getAge()) {
+                youngest = sotrudnik;
+            }
+        }
+        return youngest;
+    }
+}
